@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: uno
+    runtime: docker
+    plan: free
+    numInstances: 1
+    envVars:
+      - key: SECRET_KEY_BASE
+        generateValue: true
+      - key: PHX_SERVER
+        value: "true"
+      - key: PHX_HOST
+        value: uno-tt0m.onrender.com

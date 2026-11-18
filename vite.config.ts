@@ -5,7 +5,8 @@ export default defineConfig({
   plugins: [svelte()],
   server: {
     host: true,
-    allowedHosts: ['uno-tt0m.onrender.com'],
+    allowedHosts: ["uno-tt0m.onrender.com"],
+    proxy: { "/socket": { target: "http://127.0.0.1:4000", ws: true } },
     cors: {
       origin: [
         /^https?:\/\/(?:(?:[^:]+\.)?localhost|127\.0\.0\.1|\[::1\])(?::\d+)?$/,
