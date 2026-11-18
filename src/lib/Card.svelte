@@ -1,5 +1,16 @@
 <script lang="ts">
-  import { cardLabel, type Card } from "./game";
+  import type { Color, Value } from "./game";
+  type DisplayCard = {
+    id: string | number;
+    color: Color | "wild";
+    value: Value;
+  };
+  const cardLabel = (card: DisplayCard) => {
+    if (card.value === "wild") return "Wild";
+    if (card.value === "wild4") return "Wild draw four";
+    const color = card.color.charAt(0).toUpperCase() + card.color.slice(1);
+    return `${color} ${card.value === "draw2" ? "draw two" : card.value}`;
+  };
   let {
     card,
     playable = false,
@@ -7,7 +18,7 @@
     onclick,
     display = false,
   }: {
-    card: Card;
+    card: DisplayCard;
     playable?: boolean;
     disabled?: boolean;
     onclick?: () => void;
